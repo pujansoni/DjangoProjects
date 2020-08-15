@@ -3,7 +3,26 @@
 <h1>About</h1>
 <p>This is a template</p>
 
+{{ my_html|safe }}
+
 <p>
-{{ my_text }}, {{ my_number }}
+{{ my_text|capfirst|upper }}, {{ my_number }}
 </p>
+
+<ul>
+{% for abc in my_list %}
+    {% if abc == 123 %}
+<!--  In django if we see two curly braces then it's a good chance we can use a filter
+      which is demonstrated below by the add method. We can also stack some filters as given
+      above in the my_text|capfirst|upper
+-->
+        <li>{{ forloop.counter }} - {{ abc|add:22 }}</li>
+    {% elif abc == "abc" %}
+        <li>This is not a network</li>
+    {% else %}
+        <li>{{ forloop.counter }} - {{ abc }}</li>
+    {% endif %}
+{% endfor %}
+</ul>
+
 {% endblock %}
