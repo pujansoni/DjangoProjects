@@ -2,7 +2,7 @@
 
 **Project Title**
 
-Keyword Searching using Jaccard Similarity. Our project is based on using Jaccard Similarity for improving query searching and efficiency. Our project will focus on optimizing query to improve the searching time.
+Keyword Searching using Jaccard Similarity. The project is based on using Jaccard Similarity for improving query searching and efficiency. The project will focus on optimizing query to improve the searching time.
 
 **Project Description**
 
@@ -29,11 +29,11 @@ The cosine of two non-zero vectors can be derived by using the Euclidean dot pro
 
 **Database**
 
-We have used the SQLlite3 database and COVID worldwide dataset which consists of articles by different authors retrieved from different dataset and merged into a single dataset. For simplicity we have loaded first 500 records in our CoronaArticles models and corona_world_statistics_coronaarticles database table. The snippet of part of our data is show in the attachment below:
+The project uses the SQLlite3 database and COVID worldwide dataset which consists of articles by different authors retrieved from different dataset and merged into a single dataset. For simplicity, the first 500 records in our CoronaArticles models and corona_world_statistics_coronaarticles database table. The snippet of part of the data is show in the attachment below:
 
 ![Formula](jaccardsimilarity/static/images/article_dataset_preview.JPG)
 
 
-To supplement our project for additional research on numbers we have also used the COVID worldwide dataset in our project. The snippet of part of our data is show in the attachment below:
+To supplement the project for additional research on numbers, the COVID worldwide dataset is also used. The snippet of data is shown in the attachment below:
 
 ![Formula](jaccardsimilarity/static/images/datasetpreview.JPG)
