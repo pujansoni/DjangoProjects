@@ -1,0 +1,25 @@
+Steps:
+
+Go to the folder where you create and manage Django projects then follow the steps below:
+a) cd C:\Users\user\Desktop\Django> pip install virtualenv
+
+Here note that the venv will be the name of our virtual environment
+b) For Create a venv run this:- virtualenv -p python3 venv
+
+Use the virtual environment name to activate it
+c) Activate virtualenv:- venv\Scripts\activate
+
+You will be inside virtual environments now
+d) It will look like this:- (venv) C:\Users\user\Desktop\Django>
+
+e) Then run:- pip install -r requirements.txt
+
+f) Run the django project run this:- ./manage.py runserver
+
+You can install the Django after you have activated the virtual environment as given in step (c)
+g) pip install Django==3.0.*
+
+To deactivate the virtual environment simply write 'deactivate' command when the virtual environment is working
+
+To delete the virtual environment simply delete the directory where the virtual environment was created
+
