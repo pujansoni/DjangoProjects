@@ -21,5 +21,5 @@ urlpatterns = [
     # The above views for Login and Password change can be replaced by the below authentication URL that Django provides
     path('', include('django.contrib.auth.urls')),
     path('', views.dashboard, name='dashboard'),
-
+    path('register/', views.register, name='register'),
 ]
