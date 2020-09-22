@@ -1,0 +1,11 @@
+Installation
+-> pip install ipdb
+
+Set a breakpoint, insert the following into the code where you would like to access the interactive shell and start debugging
+-> import ipdb; ipdb.set_trace()
+
+Once the script has hit the line of code you can start inspecting. Some useful commands to note are:
+list -> list the 11 lines of code surrounding the breakpoint
+n -> next: continues execution, executes the current statement
+s -> step: execute and step into function
+c -> continue: continue to the next breakpoint
