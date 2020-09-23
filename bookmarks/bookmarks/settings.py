@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import config_django
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -137,6 +138,6 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.facebook.FacebookOAuth2',
 ]
 
-SOCIAL_AUTH_FACEBOOK_KEY = '328493471904000' # Facebook App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '2177d9f56c4bd0f93dac55fbb907d2d4' # Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_KEY = config_django.bookmarks_facebook_key # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = config_django.bookmarks_facebook_secret # Facebook App Secret
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
