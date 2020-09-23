@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import config_django
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -126,7 +127,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'pujansoniwindsor@gmail.com'
-EMAIL_HOST_PASSWORD = 'pujan@windsor.com'
+EMAIL_HOST_USER = config_django.email_secondary
+EMAIL_HOST_PASSWORD = config_django.password_secondary
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
