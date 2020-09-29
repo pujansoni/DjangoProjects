@@ -1,0 +1,1 @@
+Create an existing folder in the Django Directory whose name should match the project name you want and then set up the venve inside that and create the new project through PyCharm professional
