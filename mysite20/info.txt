@@ -1,0 +1,4 @@
+In order to run the project on command line activate the venv before running the project
+
+In order to delete a migrate and it's change on the database delete the sqlite database and the migration file,
+then do the changes intended and makemigrations -> migrate
