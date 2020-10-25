@@ -1,0 +1,19 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}
+    eLearning - APP About page
+{% endblock %}
+
+{% block myhdg %}
+    Hello Group - 11
+{% endblock %}
+
+{% block body_block %}
+    <p>This is an E-learning Website! Search our Topics to find all available Courses.</p>
+{% endblock %}
+
+{% block links %}
+    <ul>
+        <li class="hbar1"><a href = "{% url 'myapp:index' %}">Click here to return to main page</a><br/></li>
+    </ul>
+{% endblock %}

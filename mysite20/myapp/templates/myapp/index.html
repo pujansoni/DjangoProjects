@@ -1,0 +1,24 @@
+{% extends 'myapp/base.html' %}
+
+{% block myhdg %}
+    Hello Group - 11
+{% endblock %}
+
+{% block body_block %}
+    {% if top_list %}
+        <h2>List of Topics</h2>
+        <ol>
+            {% for top in top_list %}
+                <li><a href="{% url 'myapp:detail' top.id %}">{{ top.name}}</a></li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <strong>There are no available topics!</strong>
+    {% endif %}
+{% endblock %}
+
+{% block links %}
+    <ul>
+        <li class="hbar1"><a href="{% url 'myapp:about' %}">Find out about this site</a></li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}
+    eLearning - APP Detail page
+{% endblock %}
+
+{% block myhdg %}
+    Hello Group - 11
+{% endblock %}
+
+{% block body_block %}
+    {% if topic %}
+        <p>Topic: {{ topic.name }}</p>
+        <p>Length: {{ topic.length }}</p>
+        <ol>
+            {% for course in topic.courses.all %}
+                <li> {{ course.title }} </li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <strong>Invalid URL</strong>
+    {% endif %}
+{% endblock %}
+
+{% block links %}
+    <ul>
+        <li class="hbar1"><a href = "{% url 'myapp:index' %}">Click here to return to main page</a><br/></li>
+    </ul>
+{% endblock %}
