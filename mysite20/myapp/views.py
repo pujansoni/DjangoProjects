@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from .models import Topic, Course, Student, Order
 from django.shortcuts import get_object_or_404, render
+from .forms import SearchForm
 
 
 # Create your views here.
@@ -43,3 +44,24 @@ def detail(request, topic_id):
     #     para = '<p>' + '&nbsp;&nbsp;&nbsp;&nbsp;' + str(course.title) + '</p>'
     #     response.write(para)
     # return response
+
+
+def findcourses(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            length = form.cleaned_data['length']
+            max_price = form.cleaned_data['max_price']
+            topics = Topic.objects.filter(length=length) if length else Topic.objects.all()
+            courselist = []
+            for top in topics:
+                list1 = list(top.courses.filter(price__lte=max_price))
+                courselist = courselist + list1
+
+            return render(request, 'myapp/results.html', {'courselist': courselist, 'name': name, 'length': length})
+        else:
+            return HttpResponse('Invalid data')
+    else:
+        form = SearchForm()
+        return render(request, 'myapp/findcourses.html', {'form': form})
