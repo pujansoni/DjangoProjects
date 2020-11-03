@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Category, Product
 from parler.admin import TranslatableAdmin
+from .models import Category, Product
 
 
 @admin.register(Category)
@@ -13,7 +13,8 @@ class CategoryAdmin(TranslatableAdmin):
 
 @admin.register(Product)
 class ProductAdmin(TranslatableAdmin):
-    list_display = ['name', 'slug', 'price', 'available', 'created', 'updated']
+    list_display = ['name', 'slug', 'price',
+                    'available', 'created', 'updated']
     list_filter = ['available', 'created', 'updated']
     list_editable = ['price', 'available']
 

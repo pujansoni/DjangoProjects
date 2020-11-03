@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-02 01:48-0500\n"
+"POT-Creation-Date: 2020-11-02 23:01-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,29 +80,29 @@ msgstr "Comprar"
 msgid "Coupon"
 msgstr "Cupón"
 
-#: .\myshop\settings.py:119
+#: .\myshop\settings.py:121
 msgid "English"
 msgstr "Inglés"
 
-#: .\myshop\settings.py:120
+#: .\myshop\settings.py:122
 msgid "Spanish"
 msgstr "Español"
 
 #: .\myshop\urls.py:24
 msgid "admin/"
-msgstr ""
+msgstr "admin/"
 
 #: .\myshop\urls.py:25
 msgid "cart/"
-msgstr ""
+msgstr "carro/"
 
 #: .\myshop\urls.py:26
 msgid "orders/"
-msgstr ""
+msgstr "pedidos/"
 
 #: .\myshop\urls.py:27
 msgid "payment/"
-msgstr ""
+msgstr "pago/"
 
 #: .\myshop\urls.py:28
 #, fuzzy
@@ -112,26 +112,35 @@ msgstr "Cupón"
 
 #: .\payment\urls.py:8
 msgid "process/"
-msgstr ""
+msgstr "procesar/"
 
 #: .\payment\urls.py:9
 msgid "done/"
-msgstr ""
+msgstr "completado/"
 
 #: .\payment\urls.py:10
 msgid "canceled/"
-msgstr ""
+msgstr "cancelado/"
 
 #: .\shop\templates\shop\base.html:7 .\shop\templates\shop\base.html:12
 msgid "My shop"
 msgstr "Mi tienda"
 
-#: .\shop\templates\shop\base.html:18
+#: .\shop\templates\shop\base.html:17
+msgid "Language"
+msgstr ""
+
+#: .\shop\templates\shop\base.html:33
 msgid "Your cart"
 msgstr "Tu carro"
 
-#: .\shop\templates\shop\base.html:20
-#, python-format
+#: .\shop\templates\shop\base.html:35
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                %(total_items)s item%(total_items_plural)s,\n"
+#| "                $%(total_price)s\n"
+#| "              "
 msgid ""
 "\n"
 "                                %(items)s item, $%(total)s\n"
@@ -141,9 +150,13 @@ msgid_plural ""
 "                                %(items)s items, $%(total)s\n"
 "                            "
 msgstr[0] ""
+"\n"
+"%(total_items)s producto%(total_items_plural)s, $%(total_price)s"
 msgstr[1] ""
+"\n"
+"%(total_items)s producto%(total_items_plural)s, $%(total_price)s"
 
-#: .\shop\templates\shop\base.html:27
+#: .\shop\templates\shop\base.html:42
 msgid "Your cart is empty."
 msgstr "Tu carro está vacío."
 
