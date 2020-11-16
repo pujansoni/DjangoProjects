@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from .models import Topic, Course, Student, Order
-from django.shortcuts import get_object_or_404, render
-from .forms import SearchForm
+from django.shortcuts import get_object_or_404, render, redirect
+from .forms import SearchForm, OrderForm, ReviewForm
 
 
 # Create your views here.
@@ -65,3 +65,48 @@ def findcourses(request):
     else:
         form = SearchForm()
         return render(request, 'myapp/findcourses.html', {'form': form})
+
+
+def place_order(request):
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            courses = form.cleaned_data['courses']
+            order = form.save(commit=False)
+            student = order.student
+            status = order.order_status
+            order.save()
+            if status == 1:
+                for c in order.courses.all():
+                    student.registered_courses.add(c)
+            # The save_m2m() is used only if we use commit=False option for the save() method. Else the save() will
+            # automatically save the many-to-many field data
+            form.save_m2m()
+            return render(request, 'myapp/order_response.html', {'courses': courses, 'order': order})
+        else:
+            return render(request, 'myapp/place_order.html', {'form': form})
+    else:
+        form = OrderForm()
+        return render(request, 'myapp/place_order.html', {'form': form})
+
+
+def review(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            rating = form.cleaned_data['rating']
+            if 1 <= rating <= 5:
+                review_stat = form.save()
+                course = Course.objects.get(pk=review_stat.course.id)
+                course.num_reviews += 1
+                course.save()
+                return redirect('myapp:index')
+            else:
+                return render(request, 'myapp/review.html',
+                              {'form': form,
+                               'rating_message': 'You must enter a rating between 1 and 5!'})
+        else:
+            return render(request, 'myapp/review.html', {'form': form})
+    else:
+        form = ReviewForm()
+        return render(request, 'myapp/review.html', {'form': form})
