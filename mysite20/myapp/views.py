@@ -1,7 +1,10 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Topic, Course, Student, Order
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render, redirect, reverse
 from .forms import SearchForm, OrderForm, ReviewForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required, user_passes_test
+from datetime import datetime
 
 
 # Create your views here.
@@ -25,7 +28,15 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'myapp/about.html')
+    response = render(request, 'myapp/about.html')
+    if not request.COOKIES.get('about_visits'):
+        value = 1
+        response.set_cookie('about_visits', value)
+    else:
+        value = int(request.COOKIES.get('about_visits'))
+        value = value + 1
+        response.set_cookie('about_visits', value, max_age=300)
+    return response
     # return HttpResponse("This is an E-learning Website! Search our Topics to find all available Courses.")
 
 
@@ -110,3 +121,45 @@ def review(request):
     else:
         form = ReviewForm()
         return render(request, 'myapp/review.html', {'form': form})
+
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user:
+            if user.is_active:
+                login(request, user)
+                request.session['last_login'] = str(datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
+                request.session.set_expiry(3600)
+                return HttpResponseRedirect(reverse('myapp:index'))
+            else:
+                return HttpResponse('Your account is disabled.')
+        else:
+            return HttpResponse('Invalid login details.')
+    else:
+        return render(request, 'myapp/login.html')
+
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('myapp:index'))
+
+
+@login_required
+def myaccount(request):
+    # Here we will use the is_staff method to determine weather this is an admin or a student.
+    # As we have two types of users at the moment this method is helpful, else we have to modify the built-in User model
+    # and change the permissions for each type of user
+    if not request.user.is_staff:
+        student = Student.objects.get(username=request.user.username)
+        # return HttpResponse(student.get_full_name())
+        return render(request, 'myapp/myaccount.html',
+                      {'full_name': student.get_full_name(),
+                       'topics_interested': student.interested_in.all(),
+                       'orders': student.orders.all()})
+    else:
+        return HttpResponse('You are not a registered student!')
+

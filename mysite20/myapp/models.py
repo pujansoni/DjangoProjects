@@ -74,6 +74,16 @@ class Order(models.Model):
             total_price += course.price
         return total_price
 
+    def detail(self):
+        course_str = ''
+        for course in self.courses.all():
+            course_str += course.title
+            course_str += '; '
+        return 'Courses: ' + course_str + ' || Price: ' + str(self.total_cost())
+
+    def courses_ordered(self):
+        return self.courses.all().count()
+
 
 class Review(models.Model):
     reviewer = models.EmailField()

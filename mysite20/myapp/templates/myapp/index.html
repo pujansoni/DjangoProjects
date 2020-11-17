@@ -1,10 +1,20 @@
 {% extends 'myapp/base.html' %}
 
 {% block myhdg %}
-    Hello Group - 11
+    Hello
+    {% if request.session.last_login %}
+        {{ request.user.get_full_name }}
+    {% else %}
+        Group - 11
+    {% endif %}
 {% endblock %}
 
 {% block body_block %}
+    {% if request.session.last_login %}
+        <p>{{ request.session.last_login }}</p>
+    {% else%}
+        <p>Your last login was more than one hour ago</p>
+    {% endif %}
     {% if top_list %}
         <h2>List of Topics</h2>
         <ol>
