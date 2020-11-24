@@ -2,9 +2,9 @@
 
 {% block body_block %}
     <form action="{% url 'myapp:place_order' %}" method="post">
+        {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" name="submit1" value="Submit" />
-        {% csrf_token %}
     </form>
 {% endblock %}
 

@@ -2,12 +2,12 @@
 
 {% block body_block %}
     <form action="{% url 'myapp:review' %}" method="post">
+        {% csrf_token %}
         {% if rating_message %}
             <p>{{ rating_message }}</p>
         {% endif %}
         {{ form.as_p }}
         <input type="submit" name="submit1" value="Submit" />
-        {% csrf_token %}
     </form>
 {% endblock %}
 
