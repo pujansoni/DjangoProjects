@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block myhdg %}
-    Hello Group - 11
+    Hello
+    {% if request.session.last_login %}
+        {{ request.user.get_full_name }}
+    {% else %}
+        Group - 11
+    {% endif %}
 {% endblock %}
 
 {% block body_block %}
