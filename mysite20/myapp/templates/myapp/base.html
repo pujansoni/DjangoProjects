@@ -11,7 +11,7 @@
             {% block myhdg %}
                 Hello
                 {% if request.session.last_login %}
-                    {{ request.user.get_full_name }}
+                    {{ request.user.first_name }}
                 {% else %}
                     Group - 11
                 {% endif %}

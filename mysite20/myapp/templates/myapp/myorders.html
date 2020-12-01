@@ -1,0 +1,32 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}
+    Orders
+{% endblock %}
+
+{% block body_block %}
+    {% if orders %}
+        <p>Your Order{{ orders|pluralize }}</p>
+        <ul>
+            {% for order in orders %}
+                <li>
+                    <p>{{ order.courses.count }} course{{ order.courses.all|pluralize }} -
+                        Total ${{ order.total_cost }}</p>
+                    {% for c in order.courses.all %}
+                        <ul>
+                            <li>{{ c.title }}</li>
+                        </ul>
+                    {% endfor %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have not placed any order(s) yet.</p>
+    {% endif %}
+{% endblock %}
+
+{% block links %}
+    <ul>
+        <li class="hbar1"><a href = "{% url 'myapp:index' %}">Click here to return to main page</a><br/></li>
+    </ul>
+{% endblock %}

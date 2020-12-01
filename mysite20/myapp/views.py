@@ -162,7 +162,7 @@ def myaccount(request):
                        'topics_interested': student.interested_in.all(),
                        'orders': student.orders.all()})
     else:
-        return HttpResponse('You are not a registered student!')
+        return render(request, 'myapp/error.html', {'message': 'You are not a registered student!'})
 
 
 def register(request):
@@ -182,3 +182,14 @@ def register(request):
     else:
         form = RegistrationForm()
         return render(request, 'myapp/register.html', {'form': form})
+
+
+@login_required
+def myorders(request):
+    if not request.user.is_staff:
+        student = Student.objects.get(username=request.user.username)
+        orders = student.orders.all()
+        return render(request, 'myapp/myorders.html', {'orders': orders})
+    else:
+        return render(request, 'myapp/error.html', {'message': 'You are not a registered student!'})
+
