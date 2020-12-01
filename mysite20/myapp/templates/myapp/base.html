@@ -7,7 +7,16 @@
 </head>
 <body>
     <div>
-        <h1>{% block myhdg %}{% endblock %}</h1>
+        <h1>
+            {% block myhdg %}
+                Hello
+                {% if request.session.last_login %}
+                    {{ request.user.get_full_name }}
+                {% else %}
+                    Group - 11
+                {% endif %}
+            {% endblock %}
+        </h1>
         {% block body_block %} *** {% endblock %}
     </div>
     <hr />
@@ -15,7 +24,7 @@
         {% block links %}
             <ul>
                 <li class="hbar1"><a href="{% url 'myapp:findcourses' %}">Find courses</a></li>
-                <li class="hbar1"><a href="{% url 'myapp:about' %}">Find out about this site</a></li>
+                <li class="hbar1"><a href="{% url 'myapp:about' %}">About Us</a></li>
                 <li class="hbar1"><a href = "{% url 'myapp:index' %}">Click here to return to main page</a><br/></li>
             </ul>
         {% endblock %}

@@ -1,5 +1,7 @@
 from django import forms
-from myapp.models import Order, Review
+from myapp.models import Order, Review, Student
+from django.forms import ModelForm
+
 
 
 class SearchForm(forms.Form):
@@ -30,3 +32,10 @@ class ReviewForm(forms.ModelForm):
         widgets = {'course': forms.RadioSelect()}
         labels = {'reviewer': u'Please enter a valid email',
                   'rating': u'Rating: An integer between 1 (worst) and 5 (best)', }
+
+
+class RegistrationForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ['first_name', 'last_name', 'username', 'password', 'level', 'address', 'province',
+                  'registered_courses', 'interested_in']

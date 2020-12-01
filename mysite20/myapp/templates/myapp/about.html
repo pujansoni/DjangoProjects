@@ -1,16 +1,7 @@
 {% extends 'myapp/base.html' %}
 
 {% block title %}
-    eLearning - APP About page
-{% endblock %}
-
-{% block myhdg %}
-    Hello
-    {% if request.session.last_login %}
-        {{ request.user.get_full_name }}
-    {% else %}
-        Group - 11
-    {% endif %}
+    About Us
 {% endblock %}
 
 {% block body_block %}

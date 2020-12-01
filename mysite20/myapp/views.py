@@ -1,9 +1,10 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Topic, Course, Student, Order
 from django.shortcuts import get_object_or_404, render, redirect, reverse
-from .forms import SearchForm, OrderForm, ReviewForm
+from .forms import SearchForm, OrderForm, ReviewForm, RegistrationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.hashers import make_password
 from datetime import datetime
 
 
@@ -163,3 +164,21 @@ def myaccount(request):
     else:
         return HttpResponse('You are not a registered student!')
 
+
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.password = make_password(user.password)
+            user.save()
+            form.save_m2m()
+            login(request, user)
+            request.session['last_login'] = str(datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
+            request.session.set_expiry(3600)
+            return HttpResponseRedirect(reverse('myapp:index'))
+        else:
+            return render(request, 'myapp/register.html', {'form': form})
+    else:
+        form = RegistrationForm()
+        return render(request, 'myapp/register.html', {'form': form})

@@ -1,18 +1,13 @@
 {% extends 'myapp/base.html' %}
 
-{% block myhdg %}
-    Hello
-    {% if request.session.last_login %}
-        {{ request.user.get_full_name }}
-    {% else %}
-        Group - 11
-    {% endif %}
+{% block title %}
+    Index
 {% endblock %}
 
 {% block body_block %}
     {% if request.session.last_login %}
         <p>{{ request.session.last_login }}</p>
-    {% else%}
+    {% else %}
         <p>Your last login was more than one hour ago</p>
     {% endif %}
     {% if top_list %}
@@ -31,6 +26,11 @@
     <ul>
         <li class="hbar1"><a href="{% url 'myapp:findcourses' %}">Search Courses</a></li>
         <li class="hbar1"><a href="{% url 'myapp:place_order' %}">Place Order</a></li>
-        <li class="hbar1"><a href="{% url 'myapp:about' %}">Find out about this site</a></li>
+        <li class="hbar1"><a href="{% url 'myapp:about' %}">About Us</a></li>
+        {% if request.session.last_login %}
+            <li class="hbar1"><a href="{% url 'myapp:logout' %}">Logout</a></li>
+        {% else %}
+            <li class="hbar1"><a href="{% url 'myapp:register' %}">New User?</a></li>
+        {% endif %}
     </ul>
 {% endblock %}
