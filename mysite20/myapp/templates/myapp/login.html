@@ -15,6 +15,7 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required />
         </p>
+        <input type="hidden" name="next" value="{{ request.GET.next }}" />
         <input type="submit" name="submit1" value="Submit" />
     </form>
 {% endblock %}

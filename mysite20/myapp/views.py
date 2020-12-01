@@ -126,6 +126,7 @@ def review(request):
 
 def user_login(request):
     if request.method == 'POST':
+        next1 = request.POST.get("next")
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
@@ -134,22 +135,25 @@ def user_login(request):
                 login(request, user)
                 request.session['last_login'] = str(datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
                 request.session.set_expiry(3600)
-                return HttpResponseRedirect(reverse('myapp:index'))
+                if next1:
+                    return redirect(next1)
+                else:
+                    return HttpResponseRedirect(reverse('myapp:index'))
             else:
-                return HttpResponse('Your account is disabled.')
+                return render(request, 'myapp/error.html', {'message': 'Your account is disabled'})
         else:
-            return HttpResponse('Invalid login details.')
+            return render(request, 'myapp/error.html', {'message': 'Invalid Login Details'})
     else:
         return render(request, 'myapp/login.html')
 
 
-@login_required
+@login_required(login_url='/myapp/login/')
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('myapp:index'))
 
 
-@login_required
+@login_required(login_url='/myapp/login/')
 def myaccount(request):
     # Here we will use the is_staff method to determine weather this is an admin or a student.
     # As we have two types of users at the moment this method is helpful, else we have to modify the built-in User model
@@ -184,7 +188,7 @@ def register(request):
         return render(request, 'myapp/register.html', {'form': form})
 
 
-@login_required
+@login_required(login_url='/myapp/login/')
 def myorders(request):
     if not request.user.is_staff:
         student = Student.objects.get(username=request.user.username)
