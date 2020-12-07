@@ -2,6 +2,16 @@ from django.db import models
 import datetime
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+
+
+def validate_price(value):
+    if value < 50 or value > 500:
+        raise ValidationError(
+            _('Price should be between 50-500'),
+            params={'value': value},
+        )
 
 
 class Topic(models.Model):
@@ -19,8 +29,8 @@ class Course(models.Model):
     # Here we are defining a Many-to-One relationship from Course to Topic i.e: a topic can have many courses
     # The ForeignKey requires two argument: first the class to which the model is related and the on_delete option
     # The related_name name is used to access the many field in this case it's courses
-    topic = models.ForeignKey(Topic, related_name='courses', on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    topic = models.ForeignKey(Topic, related_name='courses', on_delete=models.CASCADE, blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, validators=[validate_price])
     for_everyone = models.BooleanField(default=True)
     description = models.TextField(max_length=300, blank=True, default='')
     num_reviews = models.PositiveIntegerField(default=0)

@@ -1,0 +1,246 @@
+[
+{
+  "model": "myapp.topic",
+  "pk": 1,
+  "fields": {
+    "name": "Web Development",
+    "length": 10
+  }
+},
+{
+  "model": "myapp.topic",
+  "pk": 2,
+  "fields": {
+    "name": "Management",
+    "length": 12
+  }
+},
+{
+  "model": "myapp.topic",
+  "pk": 3,
+  "fields": {
+    "name": "IT Certification",
+    "length": 14
+  }
+},
+{
+  "model": "myapp.topic",
+  "pk": 4,
+  "fields": {
+    "name": "Sports",
+    "length": 8
+  }
+},
+{
+  "model": "myapp.topic",
+  "pk": 5,
+  "fields": {
+    "name": "Economics",
+    "length": 12
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 1,
+  "fields": {
+    "title": "CCNA",
+    "topic": 3,
+    "price": "199.99",
+    "for_everyone": false,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 2,
+  "fields": {
+    "title": "AWS",
+    "topic": 3,
+    "price": "119.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 3,
+  "fields": {
+    "title": "CompTIA Security",
+    "topic": 3,
+    "price": "139.99",
+    "for_everyone": false,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 4,
+  "fields": {
+    "title": "Oracle SQL",
+    "topic": 3,
+    "price": "159.99",
+    "for_everyone": false,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 5,
+  "fields": {
+    "title": "Microeconomics",
+    "topic": 5,
+    "price": "199.99",
+    "for_everyone": false,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 6,
+  "fields": {
+    "title": "Introduction to Economics",
+    "topic": 5,
+    "price": "174.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 7,
+  "fields": {
+    "title": "Global Economics",
+    "topic": 5,
+    "price": "149.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 8,
+  "fields": {
+    "title": "Web Dev Bootcamp",
+    "topic": 1,
+    "price": "199.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 9,
+  "fields": {
+    "title": "Web Design",
+    "topic": 1,
+    "price": "159.99",
+    "for_everyone": false,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 10,
+  "fields": {
+    "title": "Web Development Masterclass",
+    "topic": 1,
+    "price": "124.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 11,
+  "fields": {
+    "title": "Build Responsive Websites",
+    "topic": 1,
+    "price": "149.99",
+    "for_everyone": false,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 12,
+  "fields": {
+    "title": "Innovation for Business",
+    "topic": 2,
+    "price": "174.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 13,
+  "fields": {
+    "title": "Leadership Skills",
+    "topic": 2,
+    "price": "184.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 14,
+  "fields": {
+    "title": "Project Management",
+    "topic": 2,
+    "price": "149.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 15,
+  "fields": {
+    "title": "Sports Psychology",
+    "topic": 4,
+    "price": "174.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 16,
+  "fields": {
+    "title": "Introduction to Soccer",
+    "topic": 4,
+    "price": "134.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 17,
+  "fields": {
+    "title": "Swimming Guide for Beginners",
+    "topic": 4,
+    "price": "99.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+}
+]

@@ -1,0 +1,585 @@
+[
+{
+  "model": "myapp.topic",
+  "pk": 1,
+  "fields": {
+    "name": "Web Development",
+    "length": 10
+  }
+},
+{
+  "model": "myapp.topic",
+  "pk": 2,
+  "fields": {
+    "name": "Management",
+    "length": 12
+  }
+},
+{
+  "model": "myapp.topic",
+  "pk": 3,
+  "fields": {
+    "name": "IT Certification",
+    "length": 14
+  }
+},
+{
+  "model": "myapp.topic",
+  "pk": 4,
+  "fields": {
+    "name": "Sports",
+    "length": 8
+  }
+},
+{
+  "model": "myapp.topic",
+  "pk": 5,
+  "fields": {
+    "name": "Economics",
+    "length": 12
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 1,
+  "fields": {
+    "title": "CCNA",
+    "topic": 3,
+    "price": "199.99",
+    "for_everyone": false,
+    "description": "",
+    "num_reviews": 2
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 2,
+  "fields": {
+    "title": "AWS",
+    "topic": 3,
+    "price": "119.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 2
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 3,
+  "fields": {
+    "title": "CompTIA Security",
+    "topic": 3,
+    "price": "139.99",
+    "for_everyone": false,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 4,
+  "fields": {
+    "title": "Oracle SQL",
+    "topic": 3,
+    "price": "159.99",
+    "for_everyone": false,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 5,
+  "fields": {
+    "title": "Microeconomics",
+    "topic": 5,
+    "price": "199.99",
+    "for_everyone": false,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 6,
+  "fields": {
+    "title": "Introduction to Economics",
+    "topic": 5,
+    "price": "174.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 7,
+  "fields": {
+    "title": "Global Economics",
+    "topic": 5,
+    "price": "149.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 1
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 8,
+  "fields": {
+    "title": "Web Dev Bootcamp",
+    "topic": 1,
+    "price": "199.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 9,
+  "fields": {
+    "title": "Web Design",
+    "topic": 1,
+    "price": "159.99",
+    "for_everyone": false,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 10,
+  "fields": {
+    "title": "Web Development Masterclass",
+    "topic": 1,
+    "price": "124.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 11,
+  "fields": {
+    "title": "Build Responsive Websites",
+    "topic": 1,
+    "price": "149.99",
+    "for_everyone": false,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 12,
+  "fields": {
+    "title": "Innovation for Business",
+    "topic": 2,
+    "price": "174.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 13,
+  "fields": {
+    "title": "Leadership Skills",
+    "topic": 2,
+    "price": "184.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 1
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 14,
+  "fields": {
+    "title": "Project Management",
+    "topic": 2,
+    "price": "149.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 15,
+  "fields": {
+    "title": "Sports Psychology",
+    "topic": 4,
+    "price": "174.99",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 16,
+  "fields": {
+    "title": "Introduction to Soccer",
+    "topic": 4,
+    "price": "109.34",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.course",
+  "pk": 17,
+  "fields": {
+    "title": "Swimming Guide for Beginners",
+    "topic": 4,
+    "price": "72.89",
+    "for_everyone": true,
+    "description": "",
+    "num_reviews": 0
+  }
+},
+{
+  "model": "myapp.student",
+  "pk": 2,
+  "fields": {
+    "level": "HS",
+    "address": "123 University Avenue",
+    "province": "ON",
+    "registered_courses": [
+      4,
+      8
+    ],
+    "interested_in": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "myapp.student",
+  "pk": 3,
+  "fields": {
+    "level": "UG",
+    "address": "235 Sunset Avenue",
+    "province": "BC",
+    "registered_courses": [],
+    "interested_in": [
+      2,
+      5
+    ]
+  }
+},
+{
+  "model": "myapp.student",
+  "pk": 4,
+  "fields": {
+    "level": "ND",
+    "address": "306 Prince Street",
+    "province": "AB",
+    "registered_courses": [
+      2
+    ],
+    "interested_in": [
+      2,
+      4
+    ]
+  }
+},
+{
+  "model": "myapp.student",
+  "pk": 5,
+  "fields": {
+    "level": "PG",
+    "address": "442 Sunset Avenue",
+    "province": "QC",
+    "registered_courses": [],
+    "interested_in": [
+      3,
+      4,
+      5
+    ]
+  }
+},
+{
+  "model": "myapp.student",
+  "pk": 6,
+  "fields": {
+    "level": "HS",
+    "address": "987 King Street",
+    "province": "ON",
+    "registered_courses": [
+      5,
+      11
+    ],
+    "interested_in": [
+      1
+    ]
+  }
+},
+{
+  "model": "myapp.student",
+  "pk": 7,
+  "fields": {
+    "level": "PG",
+    "address": "Unit-404, 606 Crawford, NA3 4B3",
+    "province": "ON",
+    "registered_courses": [
+      16,
+      17
+    ],
+    "interested_in": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "myapp.student",
+  "pk": 8,
+  "fields": {
+    "level": "PG",
+    "address": "808-555 Huron Church, NNNAAA",
+    "province": "ON",
+    "registered_courses": [
+      1,
+      2,
+      3
+    ],
+    "interested_in": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "myapp.student",
+  "pk": 10,
+  "fields": {
+    "level": "HS",
+    "address": "777 Wellington West",
+    "province": "ON",
+    "registered_courses": [
+      1,
+      2,
+      3
+    ],
+    "interested_in": [
+      1
+    ]
+  }
+},
+{
+  "model": "myapp.student",
+  "pk": 11,
+  "fields": {
+    "level": "HS",
+    "address": "897 Yukon Grey",
+    "province": "ON",
+    "registered_courses": [
+      1,
+      2
+    ],
+    "interested_in": [
+      2
+    ]
+  }
+},
+{
+  "model": "myapp.student",
+  "pk": 12,
+  "fields": {
+    "level": "HS",
+    "address": "50 Ouellette St.",
+    "province": "ON",
+    "registered_courses": [
+      2
+    ],
+    "interested_in": [
+      3
+    ]
+  }
+},
+{
+  "model": "myapp.student",
+  "pk": 13,
+  "fields": {
+    "level": "HS",
+    "address": "897 London Street",
+    "province": "ON",
+    "registered_courses": [
+      2,
+      3
+    ],
+    "interested_in": [
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "myapp.student",
+  "pk": 14,
+  "fields": {
+    "level": "HS",
+    "address": "888 York Street",
+    "province": "ON",
+    "registered_courses": [
+      2,
+      3
+    ],
+    "interested_in": [
+      3
+    ]
+  }
+},
+{
+  "model": "myapp.order",
+  "pk": 1,
+  "fields": {
+    "student": 2,
+    "order_status": 1,
+    "order_date": "2020-10-07",
+    "courses": [
+      4,
+      8
+    ]
+  }
+},
+{
+  "model": "myapp.order",
+  "pk": 2,
+  "fields": {
+    "student": 4,
+    "order_status": 1,
+    "order_date": "2020-10-07",
+    "courses": [
+      2
+    ]
+  }
+},
+{
+  "model": "myapp.order",
+  "pk": 3,
+  "fields": {
+    "student": 6,
+    "order_status": 1,
+    "order_date": "2020-10-07",
+    "courses": [
+      5,
+      11
+    ]
+  }
+},
+{
+  "model": "myapp.order",
+  "pk": 13,
+  "fields": {
+    "student": 6,
+    "order_status": 1,
+    "order_date": "2020-11-15",
+    "courses": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "myapp.order",
+  "pk": 14,
+  "fields": {
+    "student": 4,
+    "order_status": 1,
+    "order_date": "2020-11-23",
+    "courses": [
+      1,
+      7
+    ]
+  }
+},
+{
+  "model": "myapp.order",
+  "pk": 15,
+  "fields": {
+    "student": 3,
+    "order_status": 1,
+    "order_date": "2020-11-23",
+    "courses": [
+      2,
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "myapp.review",
+  "pk": 2,
+  "fields": {
+    "reviewer": "abc@gmail.com",
+    "course": 1,
+    "rating": 4,
+    "comments": "",
+    "date": "2020-11-15"
+  }
+},
+{
+  "model": "myapp.review",
+  "pk": 3,
+  "fields": {
+    "reviewer": "abc@gmail.com",
+    "course": 1,
+    "rating": 5,
+    "comments": "",
+    "date": "2020-11-15"
+  }
+},
+{
+  "model": "myapp.review",
+  "pk": 4,
+  "fields": {
+    "reviewer": "abc@gmail.com",
+    "course": 2,
+    "rating": 4,
+    "comments": "",
+    "date": "2020-11-15"
+  }
+},
+{
+  "model": "myapp.review",
+  "pk": 5,
+  "fields": {
+    "reviewer": "pujansoni1997@gmail.com",
+    "course": 2,
+    "rating": 3,
+    "comments": "",
+    "date": "2020-11-15"
+  }
+},
+{
+  "model": "myapp.review",
+  "pk": 6,
+  "fields": {
+    "reviewer": "abc@gmail.com",
+    "course": 13,
+    "rating": 1,
+    "comments": "",
+    "date": "2020-11-15"
+  }
+},
+{
+  "model": "myapp.review",
+  "pk": 7,
+  "fields": {
+    "reviewer": "soni11y@uwindsor.ca",
+    "course": 7,
+    "rating": 4,
+    "comments": "",
+    "date": "2020-11-23"
+  }
+}
+]

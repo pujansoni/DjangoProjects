@@ -3,7 +3,6 @@ from myapp.models import Order, Review, Student
 from django.forms import ModelForm
 
 
-
 class SearchForm(forms.Form):
     LENGTH_CHOICES = [
         (8, '8 Weeks'),

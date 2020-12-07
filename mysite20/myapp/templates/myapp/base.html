@@ -7,11 +7,22 @@
 </head>
 <body>
     <div>
+        <p>
+            <span style="float: right">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'myapp:logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'myapp:login' %}">Login</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="{% url 'myapp:register' %}">Register Here</a>
+                {% endif %}
+            </span>
+       </p>
         <h1>
             {% block myhdg %}
                 Hello
-                {% if request.session.last_login %}
-                    {{ request.user.first_name }}
+                {% if user.is_authenticated %}
+                    {{ user.first_name }}
                 {% else %}
                     Group - 11
                 {% endif %}

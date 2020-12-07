@@ -174,8 +174,10 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.password = make_password(user.password)
+            # Setting the chosen password
+            user.set_password(form.cleaned_data['password'])
             user.save()
+            # Saving the related models data
             form.save_m2m()
             login(request, user)
             request.session['last_login'] = str(datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
@@ -196,4 +198,3 @@ def myorders(request):
         return render(request, 'myapp/myorders.html', {'orders': orders})
     else:
         return render(request, 'myapp/error.html', {'message': 'You are not a registered student!'})
-
