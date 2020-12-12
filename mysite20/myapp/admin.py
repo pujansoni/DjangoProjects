@@ -32,9 +32,22 @@ class TopicAdmin(admin.ModelAdmin):
     inlines = [CourseInline, ]
 
 
+class StudentAdmin(admin.ModelAdmin):
+    fields = ['level', ('address', 'province'), 'registered_courses', 'interested_in', 'profile_image']
+    list_display = ('first_name', 'last_name', 'level', 'registered_courses_list')
+
+    def registered_courses_list(self, obj):
+        course_list = []
+        for course in obj.registered_courses.all():
+            course_list.append(course.title)
+        return ', '.join(course_list)
+
+    registered_courses_list.short_description = 'Registered Courses'
+
+
 # Register your models here.
 admin.site.register(Topic, TopicAdmin)
 admin.site.register(Course, CourseAdmin)
-admin.site.register(Student)
+admin.site.register(Student, StudentAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Review)

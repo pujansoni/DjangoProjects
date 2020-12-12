@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 
 
 def validate_price(value):
@@ -52,6 +53,7 @@ class Student(User):
     province = models.CharField(max_length=2, default='ON')
     registered_courses = models.ManyToManyField(Course, blank=True)
     interested_in = models.ManyToManyField(Topic)
+    profile_image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name

@@ -1,6 +1,15 @@
 from django import forms
 from myapp.models import Order, Review, Student
 from django.forms import ModelForm
+from string import Template
+from django.utils.safestring import mark_safe
+from django.forms import ImageField
+
+
+class PictureWidget(forms.widgets.Widget):
+    def render(self, name, value, attrs=None, **kwargs):
+        html = Template("""<img src="/media/$link"/>""")
+        return mark_safe(html.substitute(link=value))
 
 
 class SearchForm(forms.Form):
@@ -37,4 +46,12 @@ class RegistrationForm(forms.ModelForm):
     class Meta:
         model = Student
         fields = ['first_name', 'last_name', 'username', 'password', 'level', 'address', 'province',
-                  'registered_courses', 'interested_in']
+                  'registered_courses', 'interested_in', 'profile_image']
+
+
+class StudentEditForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ['first_name', 'last_name', 'username', 'level', 'address', 'province',
+                  'registered_courses', 'interested_in', 'profile_image']
+        # widgets = {'profile_image': PictureWidget}
