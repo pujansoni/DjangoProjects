@@ -55,3 +55,8 @@ class StudentEditForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'username', 'level', 'address', 'province',
                   'registered_courses', 'interested_in', 'profile_image']
         # widgets = {'profile_image': PictureWidget}
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)

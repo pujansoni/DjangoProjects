@@ -5,16 +5,9 @@
 {% endblock %}
 
 {% block body_block %}
-    <form action="{% url 'myapp:login' %}" method="post">
+    <form method="post">
+        {{ form.as_p }}
         {% csrf_token %}
-        <p>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required />
-        </p>
-        <p>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required />
-        </p>
         <input type="hidden" name="next" value="{{ request.GET.next }}" />
         <input type="submit" name="submit1" value="Submit" />
     </form>

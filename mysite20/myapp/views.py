@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Topic, Course, Student, Order
 from django.shortcuts import get_object_or_404, render, redirect, reverse
-from .forms import SearchForm, OrderForm, ReviewForm, RegistrationForm, StudentEditForm
+from .forms import SearchForm, OrderForm, ReviewForm, RegistrationForm, StudentEditForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.hashers import make_password
@@ -147,24 +147,42 @@ def review(request):
 def user_login(request):
     if request.method == 'POST':
         next1 = request.POST.get("next")
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user:
-            if user.is_active:
-                login(request, user)
-                request.session['last_login'] = str(datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
-                request.session.set_expiry(3600)
-                if next1:
-                    return redirect(next1)
-                else:
-                    return HttpResponseRedirect(reverse('myapp:index'))
+        # username = request.POST['username']
+        # password = request.POST['password']
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(request, username=cd['username'], password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    request.session['last_login'] = str(datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
+                    request.session.set_expiry(3600)
+                    if next1:
+                        return redirect(next1)
+                    else:
+                        return HttpResponseRedirect(reverse('myapp:index'))
             else:
-                return render(request, 'myapp/error.html', {'message': 'Your account is disabled'})
-        else:
-            return render(request, 'myapp/error.html', {'message': 'Invalid Login Details'})
+                return render(request, 'myapp/error.html', {'message': 'Invalid Login Details'})
     else:
-        return render(request, 'myapp/login.html')
+        form = LoginForm()
+    return render(request, 'myapp/login.html', {'form': form})
+
+    #     if user:
+    #         if user.is_active:
+    #             login(request, user)
+    #             request.session['last_login'] = str(datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
+    #             request.session.set_expiry(3600)
+    #             if next1:
+    #                 return redirect(next1)
+    #             else:
+    #                 return HttpResponseRedirect(reverse('myapp:index'))
+    #         else:
+    #             return render(request, 'myapp/error.html', {'message': 'Your account is disabled'})
+    #     else:
+    #         return render(request, 'myapp/error.html', {'message': 'Invalid Login Details'})
+    # else:
+    #     return render(request, 'myapp/login.html')
 
 
 @login_required(login_url='/myapp/login/')
