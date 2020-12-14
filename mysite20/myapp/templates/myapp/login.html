@@ -11,10 +11,5 @@
         <input type="hidden" name="next" value="{{ request.GET.next }}" />
         <input type="submit" name="submit1" value="Submit" />
     </form>
-{% endblock %}
-
-{% block links %}
-    <ul>
-        <li class="hbar1"><a href = "{% url 'myapp:index' %}">Click here to return to main page</a><br/></li>
-    </ul>
+    <p><a href="{% url "myapp:password_reset" %}">Forgotten your password?</a></p>
 {% endblock %}

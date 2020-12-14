@@ -10,15 +10,9 @@
         {{form.as_p}}
         <p>
             {% if student.profile_image %}
-                <img src="{{ student.profile_image.url }}">
+                <img height="200px" width="200px" src="{{ student.profile_image.url }}">
             {% endif %}
         </p>
         <input type="submit" value="Save Changes" />
     </form>
-{% endblock %}
-
-{% block links %}
-    <ul>
-        <li class="hbar1"><a href = "{% url 'myapp:index' %}">Click here to return to main page</a><br/></li>
-    </ul>
 {% endblock %}

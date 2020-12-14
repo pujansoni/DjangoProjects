@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.hashers import make_password
 from datetime import datetime
 from django.views.generic import TemplateView
+from django.contrib import messages
 
 
 class IndexView(TemplateView):
@@ -122,26 +123,31 @@ def place_order(request):
         return render(request, 'myapp/place_order.html', {'form': form})
 
 
+@login_required
 def review(request):
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            rating = form.cleaned_data['rating']
-            if 1 <= rating <= 5:
-                review_stat = form.save()
-                course = Course.objects.get(pk=review_stat.course.id)
-                course.num_reviews += 1
-                course.save()
-                return redirect('myapp:index')
+    student = Student.objects.get(pk=request.user.id)
+    if student.level=='UG' or student.level=='PG':
+        if request.method == 'POST':
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                rating = form.cleaned_data['rating']
+                if 1 <= rating <= 5:
+                    review_stat = form.save()
+                    course = Course.objects.get(pk=review_stat.course.id)
+                    course.num_reviews += 1
+                    course.save()
+                    return redirect('myapp:index')
+                else:
+                    return render(request, 'myapp/review.html',
+                                  {'form': form,
+                                   'rating_message': 'You must enter a rating between 1 and 5!'})
             else:
-                return render(request, 'myapp/review.html',
-                              {'form': form,
-                               'rating_message': 'You must enter a rating between 1 and 5!'})
+                return render(request, 'myapp/review.html', {'form': form})
         else:
+            form = ReviewForm()
             return render(request, 'myapp/review.html', {'form': form})
     else:
-        form = ReviewForm()
-        return render(request, 'myapp/review.html', {'form': form})
+        return render(request, 'myapp/error.html', {'message': 'You must an "Undergraduate" student or "Postgraduate" student in order to submit a review'})
 
 
 def user_login(request):
@@ -191,7 +197,7 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('myapp:index'))
 
 
-@login_required(login_url='/myapp/login/')
+@login_required
 def myaccount(request):
     # Here we will use the is_staff method to determine weather this is an admin or a student.
     # As we have two types of users at the moment this method is helpful, else we have to modify the built-in User model
@@ -235,13 +241,14 @@ def edit(request):
         form = StudentEditForm(data=request.POST, instance=student)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Profile updated successfully')
             return HttpResponseRedirect(reverse('myapp:index'))
     else:
         form = StudentEditForm(instance=student)
         return render(request, 'myapp/edit.html', {'form': form, 'student': student})
 
 
-@login_required(login_url='/myapp/login/')
+@login_required
 def myorders(request):
     if not request.user.is_staff:
         student = Student.objects.get(username=request.user.username)

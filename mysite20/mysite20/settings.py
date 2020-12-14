@@ -32,13 +32,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'myapp.apps.MyappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp.apps.MyappConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +124,7 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+LOGIN_URL = '/myapp/login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
