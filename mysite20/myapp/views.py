@@ -240,7 +240,8 @@ def edit(request):
     if request.method == 'POST':
         form = StudentEditForm(data=request.POST, instance=student)
         if form.is_valid():
-            form.save()
+            form.save(commit=False)
+            form.save_m2m()
             messages.success(request, 'Profile updated successfully')
             return HttpResponseRedirect(reverse('myapp:index'))
     else:
